@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="stylesheet.css" rel="stylesheet">
+    <link href="hideplayer.js" rel="text/javascript">
+
+    <title>My Project</title>
+
+
+  </head>
+
+  <body>
+    <h3> choose your preferred genre(s) </h3>
+    <form action="checkbox-form.php" method="post">
+      <input type="checkbox" name="FormGenre" value="Disney"> Disney <br>
+      <input type="checkbox" name="FormGenre" value="Pop"> Pop<br>
+      <input type="checkbox" name="FormGenre" value="Hip Hop"> Hip Hop<br>
+      <input type="checkbox" name="FormGenre" value="Electronic/Dance"> Electronic/Dance<br>
+      <input type="checkbox" name="FormGenre" value="Indie"> Indie <br>
+      <input type="checkbox" name="FormGenre" value="Soul"> Soul <br>
+      <input type="checkbox" name="FormGenre" value="Rock"> Rock <br>
+      <input type="checkbox" name="FormGenre" value="RnB"> RnB <br>
+      <input type="checkbox" name="FormGenre" value="Jazz"> Jazz <br>
+      <input type="checkbox" name="FormGenre" value="Folk/Acoustic"> Folk/Acoustic <br>
+      <input type="checkbox" name="FormGenre" value="Country"> Country <br>
+      <input type="checkbox" name="FormGenre" value="Latin"> Latin <br>
+      <input type="checkbox" name="FormGenre" value="Metal"> Metal <br>
+      <input type="checkbox" name="FormGenre" value="Classical"> Classical <br>
+      <input type="checkbox" name="FormGenre" value="Blues"> Blues <br>
+      <input type="checkbox" name="FormGenre" value="Reggae"> Reggae <br>
+      <input type="checkbox" name="FormGenre" value="Punk"> Punk <br>
+      <input type="checkbox" name="FormGenre" value="Funk"> Funk <br>
+      <input type="checkbox" name="FormGenre" value="Kpop"> Kpop <br>
+      <input type="checkbox" name="FormGenre" value="none"> Does not matter <br>
+      <input type="submit" name="formSubmit" value="Submit"/>
+    </form>
+    <button onclick="myFunction()"> click here </button>
+<div id="player">
+<iframe src="https://open.spotify.com/embed/album/3VZhtobnayfWeRS5Nm2uSu" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+ <iframe src="https://open.spotify.com/embed/track/6FcziKZepDZLVKIdDhQnJb" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+</div>
+    <!--footer-->
+<script>
+function myFunction() {
+    var x = document.getElementById("player");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+
+}
+
+var genres = [];
+
+</script>
+    <!-- JavaScript libraries -->
+
+
+  </body>
+
+</html>
