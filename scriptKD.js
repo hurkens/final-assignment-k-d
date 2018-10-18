@@ -18,12 +18,11 @@ function CheckBoxes() {
   var i;
   for(i = 0; i < activityList.length; i++) {
       if (activityList[i].checked) {
-          Activities.push(activityList[i].value);
+          activities.push(activityList[i].value);
 
           }
-          console.log(Activities);
         }
-
+console.log(activities);
 }
 
 function myFunction() {
