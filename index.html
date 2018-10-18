@@ -16,7 +16,6 @@
 
   <body>
     <h3> choose your preferred genre(s) </h3>
-    <form action="checkbox-form.php" method="post">
       <input type="checkbox" name="FormGenre" value="Disney"> Disney <br>
       <input type="checkbox" name="FormGenre" value="Pop"> Pop<br>
       <input type="checkbox" name="FormGenre" value="Hip Hop"> Hip Hop<br>
@@ -37,8 +36,7 @@
       <input type="checkbox" name="FormGenre" value="Funk"> Funk <br>
       <input type="checkbox" name="FormGenre" value="Kpop"> Kpop <br>
       <input type="checkbox" name="FormGenre" value="none"> Does not matter <br>
-      <input type="submit" name="formSubmit" value="Submit"/>
-    </form>
+      <button onclick="CheckBoxes()"/> submit </button>
     <button onclick="myFunction()"> click here </button>
 <div id="player">
 <iframe src="https://open.spotify.com/embed/album/3VZhtobnayfWeRS5Nm2uSu" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
@@ -46,6 +44,20 @@
 </div>
     <!--footer-->
 <script>
+
+
+function CheckBoxes() {
+  var x = document.getElementsByName("FormGenre");
+  var i;
+  global var genres = [];
+  for(i = 0; i < x.length; i++) {
+      if (x[i].checked) {
+          genres.push(x[i].value);
+
+          }
+}
+console.log(genres);
+}
 function myFunction() {
     var x = document.getElementById("player");
     if (x.style.display === "none") {
@@ -55,8 +67,6 @@ function myFunction() {
     }
 
 }
-
-var genres = [];
 
 </script>
     <!-- JavaScript libraries -->
