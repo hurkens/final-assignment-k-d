@@ -1,12 +1,30 @@
+angular.module('KRRclass', [ 'chart.js']).controller('MainCtrl', ['$scope','$http', mainCtrl]);
+
+
+function mainCtrl($scope, $http){
+
+	// TODO : type here code for your Ex 1
+
+
+
+	// TODO : type here code for your Ex 2
+
+
+
+	// TODO : type here code for your Ex 2
+	$scope.doMyAction = function(){
+
+
+	};
+
+}
+
+
+
 var genres = [];
 var activities = [];
-var queryRock = "PREFIX mu: <http://www.semanticweb.org/music/> SELECT ?s WHERE {?s mu:hasGenre mu:Rock}"
-var queryRockUri = "http://localhost:5820/music#!/query/" + '?query=' + encodeURIComponent(queryRock);
-var jsonpRockUri = 'http://morph.talis.com/?data-uri[]='+encodeURIComponent(queryRockUri)+'&output=jsonp&callback=processSparqlResults';
-var newScript = document.createElement('script');
-newScript.src=jsonpRockUri;
-document.body.appendChild(newScript);
-function processSparqlResults(data){  console.log(data);  }
+var queryRock = " SELECT ?s WHERE {?s http://localhost:5820/music#!/query/music/hasGenre mu:Rock}";
+
 
 
 function CheckBoxes() {
