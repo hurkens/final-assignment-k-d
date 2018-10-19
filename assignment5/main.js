@@ -1,6 +1,6 @@
 angular.module('KRRclass', [ 'chart.js']).controller('MainCtrl', ['$scope','$http', mainCtrl]);
 
-
+$scope.myAppName = "MoodMusic";
 function mainCtrl($scope, $http){
 
 	// TODO : type here code for your Ex 1
