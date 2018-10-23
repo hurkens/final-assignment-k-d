@@ -25,7 +25,7 @@
 		  Data Integration and App Building
 	    </a>
     </nav>
-
+  <h3>This is my app name : {{myAppName}}</h3>
     <h3> choose one activity </h3>
     <div class="column">  <input type="radio" name="Activity" value="Workout"> <img src="workout.png" height="100" width="100"></img> <br> </div>
     <div class="column">  <input type="radio" name="Activity" value="Party"> <img src="party.png" height="100" width="100"></img> <br> </div>
@@ -42,14 +42,14 @@
     <h3> choose your preferred genre(s) </h3>
       <input type="checkbox" name="FormGenre" value="Disney"> Disney <br>
       <input type="checkbox" name="FormGenre" value="Pop"> Pop<br>
-      <input type="checkbox" name="FormGenre" value="Hip Hop"> Hip Hop<br>
-      <input type="checkbox" name="FormGenre" value="Electronic/Dance"> Electronic/Dance<br>
+      <input type="checkbox" name="FormGenre" value="HipHop"> Hip Hop<br>
+      <input type="checkbox" name="FormGenre" value="ElectronicDance"> Electronic/Dance<br>
       <input type="checkbox" name="FormGenre" value="Indie"> Indie <br>
       <input type="checkbox" name="FormGenre" value="Soul"> Soul <br>
       <input type="checkbox" name="FormGenre" value="Rock"> Rock <br>
       <input type="checkbox" name="FormGenre" value="RnB"> RnB <br>
       <input type="checkbox" name="FormGenre" value="Jazz"> Jazz <br>
-      <input type="checkbox" name="FormGenre" value="Folk/Acoustic"> Folk/Acoustic <br>
+      <input type="checkbox" name="FormGenre" value="FolkAcoustic"> Folk/Acoustic <br>
       <input type="checkbox" name="FormGenre" value="Country"> Country <br>
       <input type="checkbox" name="FormGenre" value="Latin"> Latin <br>
       <input type="checkbox" name="FormGenre" value="Metal"> Metal <br>
@@ -60,8 +60,8 @@
       <input type="checkbox" name="FormGenre" value="Funk"> Funk <br>
       <input type="checkbox" name="FormGenre" value="Kpop"> Kpop <br>
       <input type="checkbox" name="FormGenre" value="none"> Does not matter <br>
-      <button onclick="CheckBoxes()"/> submit </button>
-    <button onclick="myFunction()"> click here </button>
+      <button class="btn btn-outline-secondary" onclick="CheckBoxes()"/> submit </button>
+    <button class="btn btn-outline-secondary" onclick="myFunction()"> click here </button>
 <div id="player">
 <iframe src="https://open.spotify.com/embed/album/3VZhtobnayfWeRS5Nm2uSu" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
  <iframe src="https://open.spotify.com/embed/track/6FcziKZepDZLVKIdDhQnJb" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
@@ -74,8 +74,7 @@
 		   <div class="row">
 		     <div class="col-8">
 	   		 <!-- TODO : Ex 1 here  -->
-
-
+        <p>My SPARQL endpoint is: {{mysparqlendpoint}}<p>
 		   	 </div>
 		 </div>
 	 	</div> <!-- end container  -->
@@ -99,8 +98,15 @@
   		     <div class="col-8">
   				   <!-- TODO Ex 3 -->
 
-
-
+             <div class="input-group mb-3">
+               <input type="text" class="form-control" ng-model="myInput" placeholder="Type here" >
+               <div class="input-group-append">
+               </div>
+             </div>
+             <button class="btn btn-outline-secondary" ng-click="doMyAction()" type="button">GO!</button>
+             <p>{{songs_playlist}}</p>
+             <div id=songs>
+             </div>
 
   		     </div>
 		    </div>
