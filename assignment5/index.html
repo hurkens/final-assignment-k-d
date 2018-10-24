@@ -61,11 +61,12 @@
       <input type="checkbox" name="FormGenre" value="Kpop"> Kpop <br>
       <input type="checkbox" name="FormGenre" value="none"> Does not matter <br>
       <button class="btn btn-outline-secondary" onclick="CheckBoxes()"/> submit </button>
-    <button class="btn btn-outline-secondary" onclick="myFunction()"> click here </button>
+  <!--  <button class="btn btn-outline-secondary" onclick="myFunction()"> click here </button>
 <div id="player">
 <iframe src="https://open.spotify.com/embed/album/3VZhtobnayfWeRS5Nm2uSu" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
  <iframe src="https://open.spotify.com/embed/track/6FcziKZepDZLVKIdDhQnJb" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
 </div>
+-->
 <!-- Main Content -->
     <div class="container mb-5">
 
@@ -99,12 +100,12 @@
   				   <!-- TODO Ex 3 -->
 
              <div class="input-group mb-3">
-               <input type="text" class="form-control" ng-model="myInput" placeholder="Type here" >
+               <input type="text" class="form-control" ng-model="myInput" placeholder="Type name of playlist here" >
                <div class="input-group-append">
                </div>
              </div>
              <button class="btn btn-outline-secondary" ng-click="doMyAction()" type="button">GO!</button>
-             <p>{{songs_playlist}}</p>
+             <p>your playlist: {{myInput}}</p>
              <div id=songs>
              </div>
 
