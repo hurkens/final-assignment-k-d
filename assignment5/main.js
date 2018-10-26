@@ -37,7 +37,7 @@ function mainCtrl($scope, $http, ChartJsProvider){
   //onze naam
     $scope.myAppName = "MoodMusic";
     //dit is de endpoint, waar de database is
-    $scope.mysparqlendpoint = "http://localhost:5820/music/query/?query="
+    $scope.mysparqlendpoint = "http://localhost:5820/music/query/?reasoning=true&query="
 
 	// TODO : type here code for your Ex 2
 
@@ -45,6 +45,7 @@ function mainCtrl($scope, $http, ChartJsProvider){
 
 	// TODO : type here code for your Ex 2
   $scope.doMyAction = function(){
+        code_player = [];
         console.log('test');
         $scope.result = "Here is my input: " +$scope.myInput+"!";
         //hier maken we een variabele aan voor de liedjes die in de playlist komen
@@ -57,7 +58,11 @@ function mainCtrl($scope, $http, ChartJsProvider){
         if (genres.length == 0){
           window.alert("please select genre(s)")
         }
+        if (activities.length == 0){
+          window.alert("please select activity (or the questionmark picture)")
+        }
         //hier onder staat voor elke genre queriet ie naar de database
+        if (activities == "None"){
         for (i = 0; i < genres.length; i++) {
         $scope.dynamicQuery = "SELECT ?code WHERE { ?s <http://www.semanticweb.org/music/hasGenre> <http://www.semanticweb.org/music/"+genres[i]+"> . ?s <http://www.semanticweb.org/music/hasSpotifyCode> ?code }";
         //$scope.dynamicQuery = $scope.myInput;
@@ -71,12 +76,13 @@ function mainCtrl($scope, $http, ChartJsProvider){
 
     } )
     //als het succesvol was console.logt ie wat terug gekregen en voor elke data voegt ie de resultaten toe aan songs_playlist
+
     .success(function(data, status ) {
         //console.log(data);
 
         var results = data.results.bindings;
             //console.log(results);
-            code_player = [];
+
             for (i=0; i < results.length; i++){
             code_player.push(results[i].code.value);
           }
@@ -94,6 +100,86 @@ function mainCtrl($scope, $http, ChartJsProvider){
     });
   }
 
+}
+//hier komt de functie voor het samenvoegen van activities en genres
+      if (activities != "None") {
+        for (i = 0; i < genres.length; i++) {
+
+        //$scope.dynamicQuery = "SELECT ?code WHERE { ?s a <http://www.semanticweb.org/music/"+activities+"Song> . ?s <http://www.semanticweb.org/music/hasSpotifyCode> ?code }";
+          $scope.dynamicQuery = "SELECT ?code WHERE { ?s a <http://www.semanticweb.org/music/"+activities+"Song> . ?s <http://www.semanticweb.org/music/hasGenre> <http://www.semanticweb.org/music/"+genres[i]+"> . ?s <http://www.semanticweb.org/music/hasSpotifyCode> ?code }";
+          console.log(activities);
+        //$scope.dynamicQuery = $scope.myInput;
+
+
+        console.log($scope.mysparqlendpoint+encodeURI($scope.dynamicQuery).replace(/#/g, '%23'));
+        $http( {
+        method: "GET",
+        headers : {'Accept':'application/sparql-results+json', 'Content-Type':'application/sparql-results+json'},
+        url : $scope.mysparqlendpoint+encodeURI($scope.dynamicQuery).replace(/#/g, '%23'),
+
+    } )
+    //als het succesvol was console.logt ie wat terug gekregen en voor elke data voegt ie de resultaten toe aan songs_playlist
+
+    .success(function(data, status ) {
+        //console.log(data);
+
+        var results = data.results.bindings;
+            //console.log(results);
+            for (i=0; i < results.length; i++){
+            code_player.push(results[i].code.value);
+          }
+            //console.log(results[0].value);
+            console.log(code_player);
+            if (code_player.length < 10) {
+              console.log("minder dan 10!!!!!!!!!!!!!!!!!!!")
+                for (i = 0; i < genres.length; i++) {
+                  $scope.dynamicQuery = "SELECT ?code WHERE { {?s a <http://www.semanticweb.org/music/"+activities+"Song>} UNION {?p <http://www.semanticweb.org/music/hasGenre> <http://www.semanticweb.org/music/"+genres[i]+">} . ?s <http://www.semanticweb.org/music/hasSpotifyCode> ?code . ?p <http://www.semanticweb.org/music/hasSpotifyCode> ?code MINUS { ?p a <http://www.semanticweb.org/music/"+activities+"Song> . ?s <http://www.semanticweb.org/music/hasGenre> <http://www.semanticweb.org/music/"+genres[i]+">}} LIMIT 10";
+              //$scope.dynamicQuery = $scope.myInput;
+
+
+              console.log($scope.mysparqlendpoint+encodeURI($scope.dynamicQuery).replace(/#/g, '%23'));
+              $http( {
+              method: "GET",
+              headers : {'Accept':'application/sparql-results+json', 'Content-Type':'application/sparql-results+json'},
+              url : $scope.mysparqlendpoint+encodeURI($scope.dynamicQuery).replace(/#/g, '%23'),
+
+          } )
+          //als het succesvol was console.logt ie wat terug gekregen en voor elke data voegt ie de resultaten toe aan songs_playlist
+
+          .success(function(data, status ) {
+              //console.log(data);
+
+              var results = data.results.bindings;
+                  //console.log(results);
+
+                  for (i=0; i < results.length; i++){
+                  code_player.push(results[i].code.value);
+                }
+                  //console.log(results[0].value);
+                  console.log(code_player);
+
+              document.getElementById("songs").innerHTML = code_player;
+
+              $scope.songs_playlist.push(data);
+              $scope.resultQ2=data;
+          })
+          //dit is voor als het fout gaat om een of andere reden
+          .error(function(error ){
+              console.log('Error'+error);
+          });
+        }
+            }
+        document.getElementById("songs").innerHTML = code_player;
+
+        $scope.songs_playlist.push(data);
+        $scope.resultQ2=data;
+    })
+    //dit is voor als het fout gaat om een of andere reden
+    .error(function(error ){
+        console.log('Error'+error);
+    });
+      }
+      }
 }
 //console.log($scope.songs_playlist);
 
