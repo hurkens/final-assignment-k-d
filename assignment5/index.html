@@ -2,18 +2,19 @@
 <html ng-App="KRRclass" lang="en">
 
   <head>
-
+    <link rel="shortcut icon" href="favicon.jpeg">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link href="stylesheet.css" rel="stylesheet">
+
     <script src="main.js" type="text/javascript"></script>
 
     <title>My Project</title>
 
     <link href="./css/bootstrap.min.css" rel="stylesheet">
     <link href="./css/css-custom.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
 
   </head>
 
@@ -26,7 +27,7 @@
 	    </a>
     </nav>
   <h3>This is my app name : {{myAppName}}</h3>
-    <h3> choose one activity </h3>
+    <h3> Choose one activity </h3>
     <div class="column">  <input type="radio" name="Activity" value="Workout"> <img src="workout.png" height="100" width="100"></img> <br> </div>
     <div class="column">  <input type="radio" name="Activity" value="Party"> <img src="party.png" height="100" width="100"></img> <br> </div>
     <div class="column">  <input type="radio" name="Activity" value="Sleeping"> <img src="sleep.png" height="100" width="100"></img> <br> </div>
@@ -41,7 +42,8 @@
     <br>
     <br>
     <br>
-    <h3> choose your preferred genre(s) </h3>
+    <div id="the_genres">
+    <h3> Choose your preferred genre(s) </h3>
       <input type="checkbox" name="FormGenre" value="Disney"> Disney <br>
       <input type="checkbox" name="FormGenre" value="Pop"> Pop<br>
       <input type="checkbox" name="FormGenre" value="HipHop"> Hip Hop<br>
@@ -62,7 +64,13 @@
       <input type="checkbox" name="FormGenre" value="Funk"> Funk <br>
       <input type="checkbox" name="FormGenre" value="Kpop"> Kpop <br>
       <input type="checkbox" name="FormGenre" value="none"> Does not matter <br>
-      <button class="btn btn-outline-secondary" onclick="CheckBoxes()"/> submit </button>
+    </div>
+
+      <button class="btn btn-outline-secondary" onclick="CheckBoxes()"/> submit genres and activities </button>
+      <br>
+      <br>
+      <h5> Click this button if you also want songs that aren't from Spotify! </h5>
+      <button class="btn btn-outline-secondary" ng-click="OtherDatabases()"/> other databases! </button>
   <!--  <button class="btn btn-outline-secondary" onclick="myFunction()"> click here </button>
 <div id="player">
 <iframe src="https://open.spotify.com/embed/album/3VZhtobnayfWeRS5Nm2uSu" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
@@ -110,7 +118,11 @@
              <p>your playlist: {{myInput}}</p>
              <div id=songs>
              </div>
-
+             <div id=other_songs1>
+             </div>
+             <br>
+             <div id=other_songs2>
+             </div>
   		     </div>
 		    </div>
 		 </div>

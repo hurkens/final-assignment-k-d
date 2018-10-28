@@ -1,7 +1,10 @@
 body {
-  background-color:#bb99ff;
+  background-color: white;
 }
 
 .column {
   float: left;
+}
+#the_genres {
+  x.style.display = "block";
 }
