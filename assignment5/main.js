@@ -64,7 +64,7 @@ function mainCtrl($scope, $http, ChartJsProvider){
         //hier onder staat voor elke genre queriet ie naar de database
         if (activities == "None"){
         for (i = 0; i < genres.length; i++) {
-        $scope.dynamicQuery = "SELECT ?code WHERE { ?s <http://www.semanticweb.org/music/hasGenre> <http://www.semanticweb.org/music/"+genres[i]+"> . ?s <http://www.semanticweb.org/music/hasSpotifyCode> ?code }";
+        $scope.dynamicQuery = "SELECT ?code WHERE { ?s <http://www.semanticweb.org/music/hasGenre> <http://www.semanticweb.org/music/"+genres[i]+"> . ?s <http://www.semanticweb.org/music/hasSpotifyCode> ?code } LIMIT 4";
         //$scope.dynamicQuery = $scope.myInput;
 
 
